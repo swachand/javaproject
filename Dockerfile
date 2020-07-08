@@ -4,6 +4,6 @@ FROM tomcat:latest
 
 ADD target/*.war /usr/local/tomcat/webapps/javaweb.war
 
-#EXPOSE 8080
+EXPOSE 8080
 
-#CMD ["catalina.sh", "run"]
+CMD ["catalina.sh", "run"]
