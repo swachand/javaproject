@@ -42,7 +42,7 @@ pipeline{
     
       sh  "docker login -u swach -p ${Hublogin} docker.io"
         
-      sh  'docker push swach/javaproject:v1.1.0.2'
+      sh  'docker push swach/javaproject:v1.1.0.10'
          }
       } 
      }
