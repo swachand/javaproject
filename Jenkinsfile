@@ -33,9 +33,18 @@ pipeline{
       //def datestamp = sh(script: 'date +"%M-%S"', returnStdout: true).trim()
      // def version = "latest-${datestamp}
       steps {
-      sh  'docker build -t swach/javaproject:v1.1.0.5 .' 
+      sh  'docker build -t swach/javaproject:v1.1.0.6 .' 
       }
-     }
+     } 
+       stage ('Container Run on Test Server') { 
+       //def DockerRunCMD = 'docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.2'
+         steps {
+         sshagent(['test-server']) {
+      
+         sh "ssh -o StrictHostKeyChecking=no ubuntu@13.232.220.128 docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.6"
+         }
+        }    
+      }
         stage('Close App Server SG') {
             steps {
                withAWS(credentials: 'AWSCred', region: 'ap-south-1') {
