@@ -33,15 +33,15 @@ pipeline{
       //def datestamp = sh(script: 'date +"%M-%S"', returnStdout: true).trim()
      // def version = "latest-${datestamp}
       steps {
-      sh  'docker build -t swach/javaproject:v1.1.0.6 .' 
+      sh  'docker build -t swach/javaproject:v1.1.0.10 .' 
       }
      } 
-       stage ('Container Run on Test Server') { 
+       stage ('Container Run on App Server') { 
        //def DockerRunCMD = 'docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.2'
          steps {
          sshagent(['test-server']) {
       
-         sh "ssh -o StrictHostKeyChecking=no ubuntu@13.232.220.128 docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.6"
+         sh "ssh -o StrictHostKeyChecking=no ubuntu@13.234.118.183 docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.10"
          }
         }    
       }
