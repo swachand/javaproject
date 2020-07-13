@@ -28,6 +28,15 @@ pipeline{
       sh "${mvnCMD} clean package"
       }
     }
+    stage ('Build Docker Image'){
+      
+      //def datestamp = sh(script: 'date +"%M-%S"', returnStdout: true).trim()
+     // def version = "latest-${datestamp}"
+     
+      
+      sh  'docker build -t swach/javaproject:v1.1.0.5 .' 
+ 
+      }
         stage('Close App Server SG') {
             steps {
                withAWS(credentials: 'AWSCred', region: 'ap-south-1') {
