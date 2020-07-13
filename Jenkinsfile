@@ -35,7 +35,17 @@ pipeline{
       steps {
       sh  'docker build -t swach/javaproject:v1.1.0.10 .' 
       }
-     } 
+     }
+      stage ('Push Docker Image'){
+          steps {
+      withCredentials([string(credentialsId: 'hubdockerpwd', variable: 'Hublogin')]) {
+    
+      sh  "docker login -u swach -p ${Hublogin} docker.io"
+        
+      sh  'docker push swach/javaproject:v1.1.0.2'
+         }
+      } 
+     }
        stage ('Container Run on App Server') { 
        //def DockerRunCMD = 'docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.2'
          steps {
