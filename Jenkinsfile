@@ -2,7 +2,7 @@ pipeline{
     agent { label 'agent'
       }
       environment {
-          PATH = "opt/apache-maven-3.6.3/bin/mvn"
+          mvnCMD = "opt/apache-maven-3.6.3/bin/mvn"
       }
       stages {
          stage('Open App Server SG') {
@@ -25,7 +25,7 @@ pipeline{
     } 
         stage ('Maven Package'){
       steps {
-      sh "${PATH} clean package"
+      sh "${mvnCMD} clean package"
       }
     }
         stage('Close App Server SG') {
