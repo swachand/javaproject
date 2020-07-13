@@ -39,10 +39,10 @@ pipeline{
             steps {
                mail bcc: '', body: '''HI Team,
 
-                 Please check the new commit execution status.
+Please check the new commit execution status.
 
-                Thanks
-                Swachand''', cc: '', from: '', replyTo: '', subject: 'Jenkins Pipeline New Commit', to: 'b4oncloud@gmail.com'
+Thanks
+Swachand''', cc: '', from: '', replyTo: '', subject: 'Jenkins Pipeline New Commit', to: 'b4oncloud@gmail.com'
                }
            }
     }
