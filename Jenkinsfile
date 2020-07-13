@@ -2,7 +2,7 @@ pipeline{
     agent { label 'agent'
       }
       environment {
-          mvnCMD = "opt/apache-maven-3.6.3/bin/mvn"
+          mvnCMD = "/opt/apache-maven-3.6.3/bin/mvn"
       }
       stages {
          stage('Open App Server SG') {
