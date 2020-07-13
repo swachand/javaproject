@@ -40,7 +40,7 @@ pipeline{
        //def DockerRunCMD = 'docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.2'
          steps {
          sshagent(['test-server']) {
-      //App server sshCred
+      //App server sshconnet
          sh "ssh -o StrictHostKeyChecking=no ubuntu@13.234.118.183 docker run -d -p 8080:8080 --name myjavapro swach/javaproject:v1.1.0.10"
          }
         }    
